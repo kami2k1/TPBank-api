@@ -1,2 +1,7 @@
 requests
 python-dotenv
+python-dateutil
+mysql-connector-python==8.0.33
+requests[security]
+pyOpenSSL
+flask

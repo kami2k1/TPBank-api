@@ -1,0 +1,241 @@
+.modal-instruction {
+    width: 80%;
+    margin: 3rem auto 1rem auto;
+    max-width: 250px;
+}
+
+.modal-content {
+    border-radius: 1rem;
+}
+
+.modal-guide-body {
+    padding: 0;
+}
+
+.modal-body > .title {
+    position: absolute;
+    width: 100%;
+}
+
+.modal-body .title > div {
+    background-image: url("../images/qr-instruction-title-background.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: top;
+    height: 30px;
+    width: 80%;
+    margin: auto;
+    display: table;
+}
+
+.modal-body .title > div h5 {
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.modal-container .title {
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.modal-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-container .momo {
+    background-color: #eb2f96;
+    padding: 40px 0 20px 0;
+    border-radius: 1rem;
+}
+
+.modal-container .bank {
+    padding-top: 20px;
+    background-color: #e8e8e8;
+    border-radius: 0 0 1rem 1rem;
+}
+
+.modal-container .image {
+    width: 70%;
+}
+
+.modal-container .note {
+    color: white;
+    font-size: 12px;
+    font-weight: 400;
+    margin: 10px 20px 0 20px;
+    font-style: italic;
+}
+
+.modal-container .image .arrow {
+    display: none;
+    position: absolute;
+}
+
+@media only screen and (min-width: 374px) and (max-width: 575px) {
+    .modal-instruction {
+        max-width: 330px;
+        margin: 3rem auto 2rem auto;
+    }
+
+    .modal-container .image {
+        width: 55%;
+    }
+}
+
+@media only screen and (min-width: 577px) {
+    .modal-container .momo {
+        padding: 40px 30px 30px;
+    }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+    .modal-instruction {
+        max-width: 450px;
+    }
+
+    .modal-container .image {
+        width: 45%;
+    }
+
+    .modal-container .image .arrow {
+        display: block;
+    }
+
+    .modal-container div img:last-of-type {
+        margin-left: 20px;
+    }
+
+    .modal-container .momo .arrow {
+        width: 60px;
+        top: 12%;
+        left: 70%;
+    }
+
+    .modal-body .title > div h5 {
+        font-size: 16px;
+    }
+
+    .modal-container .momo {
+        padding: 40px 30px 30px;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .modal-instruction {
+        max-width: 450px;
+    }
+
+    .modal-container .image {
+        width: 45%;
+    }
+
+    .modal-container .image .arrow {
+        display: block;
+    }
+
+    .modal-container div img:last-of-type {
+        margin-left: 20px;
+    }
+
+    .modal-container .momo .arrow {
+        width: 65px;
+        top: 12%;
+        left: 70%;
+    }
+
+    .modal-body .title > div h5 {
+        font-size: 16px;
+    }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+    .modal-container {
+        flex-direction: row;
+    }
+
+    .modal-instruction {
+        width: 70%;
+        max-width: 500px;
+        margin-top: 0;
+    }
+
+    .modal-container .image {
+        width: 45%;
+    }
+
+    .modal-container div img:last-of-type {
+        margin-left: 20px;
+    }
+
+    .modal-container .momo {
+        padding-top: 50px;
+    }
+
+    .modal-container .image .arrow {
+        display: block;
+    }
+
+    .modal-container .momo .arrow {
+        width: 60px;
+        top: 13%;
+        left: 74%;
+    }
+
+    .modal-body .title > div h5 {
+        font-size: 18px;
+    }
+
+    .modal-body .title > div {
+        height: 35px;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .modal-container {
+        flex-direction: row;
+    }
+
+    .modal-instruction {
+        max-width: 600px;
+        margin-top: 0;
+    }
+
+    .modal-container .image {
+        width: 45%;
+    }
+
+    .modal-container div img:last-of-type {
+        margin-left: 20px;
+    }
+
+    .modal-container .image .arrow {
+        display: block;
+    }
+
+    .modal-container .momo .arrow {
+        width: 70px;
+        top: 13%;
+        left: 74%;
+    }
+
+    .modal-container .momo {
+        padding: 50px 30px 30px;
+    }
+
+    .modal-body .title > div {
+        height: 40px;
+    }
+
+    .modal-body .title > div h5 {
+        font-size: 18px;
+    }
+
+    .modal-container .title {
+        font-size: 16px;
+    }
+}

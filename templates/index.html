@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Cổng thanh toán MoMo</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <meta property="og:locale" content="vi_VN"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="MoMo Payment"/>
+    <meta property="og:description" content="Nhà cung cấp: MoMo Demo. 
+Mã đơn hàng: OD1746202511829. 
+Số tiền: 10.000. 
+Mô tả: Thanh toan hoa don OD1746202511829"/>
+    <meta property="og:image:width" content="800"/>
+    <meta property="og:image:height" content="366"/>
+    <meta property="og:image" content="https://static.momocdn.net/app/media/payment/banner.jpg"/>
+    <link
+          href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900italic,900' rel='stylesheet'>
+<!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.3/css/bootstrap.min.css">
+    <link media="screen" rel="stylesheet" href="/v2/gateway/css/core.css"/>
+    <link href="/v2/gateway/images/icons/momo.ico" rel="SHORTCUT ICON">
+    <script crossorigin="anonymous"
+            integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+            src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<!--    <script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lazyload/2.0.3/lazyload.js"></script>
+
+
+<meta content="width=device-width, initial-scale=1" name="viewport">
+
+
+<meta name="_csrf" content="1403dab7-fc7b-4f10-8872-57f917628684"/>
+
+
+<!-- default header name is X-CSRF-TOKEN -->
+
+
+<meta name="_csrf_header" content="X-CSRF-TOKEN"/>
+
+
+<link media="screen" rel="stylesheet" href="/v2/gateway/css/payment.css"/>
+
+
+<link media="screen" rel="stylesheet" href="/v2/gateway/css/qr.css"/>
+
+
+<link media="screen" rel="stylesheet" href="/v2/gateway/css/slider.css"/>
+
+
+<link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet'>
+
+
+<style>
+        .content {
+            min-height: calc(100vh - var(--footer-header-height, 20vh));
+        }
+        .payment-cta h1 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            line-height: 1.5rem;
+        }
+        .payment-form .payment-content {
+            background: url(https://static.mservice.io/jk/momo2020/img/intro/qrcode-pattern.png) 10px 10px no-repeat, linear-gradient(0deg, #c1177c, #e11b90);
+            padding-bottom: 5%
+        }
+        .payment-form .expire-content .box-expire {
+            background-color: rgb(255 240 246);
+        }
+
+        .payment-form .expire-content .box-expire .expire-text {
+            color: rgb(216 45 139);
+        }
+
+        .payment-qr {
+            min-width: 350px;
+        }
+
+        .payment-form .expire-content .box-expire .time-box {
+            background-color: #f3d4e6;
+        }
+    </style>
+
+
+<link media="screen" rel="stylesheet" href="/v2/gateway/css/guide.css"/>
+
+
+<link media="screen" rel="stylesheet" href="/v2/gateway/css/guide-vietqr.css"/>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+</head>
+<body>
+<header id="header">
+    <div class="container">
+        <div class="header-wrapper">
+            <div class="logo-wrap">
+                <a class="navbar-brand momo-logo">
+                    <svg class="svg-icon fill-current imgLogo " fill="#fff" height="87" viewBox="0 0 96 87" width="96"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path d="M75.5326 0C64.2284 0 55.0651 8.74843 55.0651 19.5409C55.0651 30.3333 64.2284 39.0818 75.5326 39.0818C86.8368 39.0818 96 30.3333 96 19.5409C96 8.74843 86.8368 0 75.5326 0ZM75.5326 27.8805C70.7368 27.8805 66.8403 24.1604 66.8403 19.5818C66.8403 15.0031 70.7368 11.283 75.5326 11.283C80.3283 11.283 84.2248 15.0031 84.2248 19.5818C84.2248 24.1604 80.3283 27.8805 75.5326 27.8805ZM49.1561 14.6761V39.1226H37.3809V14.5535C37.3809 12.7138 35.8394 11.2421 33.9126 11.2421C31.9857 11.2421 30.4442 12.7138 30.4442 14.5535V39.1226H18.669V14.5535C18.669 12.7138 17.1276 11.2421 15.2007 11.2421C13.2739 11.2421 11.7324 12.7138 11.7324 14.5535V39.1226H0V14.6761C0 6.58176 6.89385 0 15.372 0C18.8403 0 22.0089 1.10377 24.5781 2.9434C27.1472 1.10377 30.3586 0 33.7841 0C42.2623 0 49.1561 6.58176 49.1561 14.6761ZM75.5326 47.544C64.2284 47.544 55.0651 56.2925 55.0651 67.0849C55.0651 77.8774 64.2284 86.6258 75.5326 86.6258C86.8368 86.6258 96 77.8774 96 67.0849C96 56.2925 86.8368 47.544 75.5326 47.544ZM75.5326 75.4245C70.7368 75.4245 66.8403 71.7044 66.8403 67.1258C66.8403 62.5472 70.7368 58.827 75.5326 58.827C80.3283 58.827 84.2248 62.5472 84.2248 67.1258C84.2248 71.7044 80.3283 75.4245 75.5326 75.4245ZM49.1561 62.2201V86.6667H37.3809V62.0975C37.3809 60.2579 35.8394 58.7862 33.9126 58.7862C31.9857 58.7862 30.4442 60.2579 30.4442 62.0975V86.6667H18.669V62.0975C18.669 60.2579 17.1276 58.7862 15.2007 58.7862C13.2739 58.7862 11.7324 60.2579 11.7324 62.0975V86.6667H0V62.2201C0 54.1258 6.89385 47.544 15.372 47.544C18.8403 47.544 22.0089 48.6478 24.5781 50.4874C27.1472 48.6478 30.3158 47.544 33.7841 47.544C42.2623 47.544 49.1561 54.1258 49.1561 62.2201Z"
+                              fill=""></path>
+                    </svg>
+                </a>
+                <span class="logo-title">Cổng thanh toán MoMo</span>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="payment-container content">
+        <div><div id="load">
+    <div class="loader">
+        <span class="loader__element"></span>
+        <span class="loader__element"></span>
+        <span class="loader__element"></span>
+    </div>
+    <span class="text-center">Đang tải dữ liệu giao dịch</span>
+</div></div>
+        <div class="d-none container" id="contents">
+            <input id="canary" value="false" type="hidden"/>
+            <div class="modal-background modal momoModal" id="paymentModal" role="dialog" tabindex="-1">
+    <div class="modal-instruction modal-dialog-centered" role="document">
+        <div class="modal-content text-center">
+            <div class="modal-body modal-guide-body">
+                <img class="button-modal-close" onclick="closeModal()"
+                     src="/v2/gateway/images/navigation-close-circle.svg"/>
+                <div class="title">
+                    <div>
+                        <h5 class="">Hướng dẫn quét mã QR</h5>
+                    </div>
+                </div>
+                <div class="modal-container">
+                    <div class="momo">
+                        <h5 class="title">Quét mã bằng MoMo</h5>
+                        <div style="position: relative; display: inline-block" class="image">
+                            <img style="width: 104%" src="/v2/gateway/images/qr-instruction-momo.png"
+                                 alt=""/>
+                            <img class="arrow" src="/v2/gateway/images/qr-instruction-arrow.png"
+                                 alt=""/>
+                        </div>
+                        <img class="image" src="/v2/gateway/images/qr-instruction-momo2.png" alt=""/>
+                        <div class="note">*Lưu ý: Luôn thanh
+                            toán bằng MoMo hoặc ứng dụng ngân hàng để được hỗ trợ tốt nhất.
+                        </div>
+                    </div>
+                    <div class="bank">
+                        <h5 class="title" style="color:#303233;">Quét mã bằng ứng dụng ngân hàng</h5>
+                        <div style="position: relative; display: inline-block" class="image">
+                            <img style="width: 100%"
+                                 src="/v2/gateway/images/qr-instruction-bank.png"/>
+                            <img class="arrow" src="/v2/gateway/images/qr-instruction-arrow2.png"
+                                 alt=""/>
+                        </div>
+                        <img class="image" src="/v2/gateway/images/qr-instruction-bank2.png"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+            <div class="row qr-web d-flex justify-content-center" id="qr-web-ui">
+                <div class="row payment-form" id="form-qr-code">
+                    <div class="col-lg-4 payment-form">
+                        <div class="ui-desktop"><div class="info-content">
+    <div class="payment-info payment-info-bottom">
+        
+
+        <div class="payment-title">
+            <h1> Thông tin đơn hàng</h1>
+        </div>
+        <div class="payment-detail">
+            <div>
+                <div class="box-detail">
+                    <h4>Nhà cung cấp</h4>
+                    <div class="two-box">
+                        <img class="merchant-logo" src="https://upload.wikimedia.org/wikipedia/vi/f/fe/MoMo_Logo.png" loading="lazy">
+                        <p class="merchant-name">MoMo Demo</p>
+                    </div>
+                </div>
+                
+                    <div class="line-detail"></div>
+                    <div class="box-detail">
+                        <h4>Mã đơn hàng</h4>
+                        <p class="ellipsis" data-toggle="tooltip" data-placement="top" data-animation="true">OD1746202511829</p>
+                    </div>
+                
+
+                
+                
+                <div class="box-detail">
+                    <div class="line-detail"></div>
+                    <h4>Mô tả</h4>
+                    <p class="ellipsis" data-toggle="tooltip" data-placement="top" data-animation="true">Thanh toan hoa don OD1746202511829</p>
+                </div>
+                
+
+            </div>
+            
+            
+                
+                    <div class="line-detail"></div>
+                    <div class="box-detail">
+                        <h4>Số tiền</h4>
+                        <h3>10.000đ</h3>
+                        
+                    </div>
+                
+            
+            
+        </div>
+    </div>
+</div>
+<div class="expire-content mb-3">
+    <div class="box-expire">
+        <div class="expire-text">
+            <p>Đơn hàng sẽ hết hạn sau: <br/> <span class="font-weight-bold time-expire-text d-inline-flex"
+                                                    name="expiredAt"></span></p>
+        </div>
+    </div>
+</div>
+</div>
+                        <div class="text-center my-3 font-size-14 font-weight-bold-600">
+                            <a id="backButton" class="momo-color hover-momo-color hover-none-decoration" href="">Quay về</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="payment-content" id="body-payment-content">
+                            <div class="payment-qr col-sm-7 mx-auto pb-0 pt-3 pb-3 text-white">
+                                <div class="payment-cta p-0">
+                                    <div>
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        <h1>Quét mã QR để thanh toán</h1>
+                                    </div>
+                                    <div id="momo-mark" class="mx-auto pt-3">
+                                        <div><div class="momo-vietqr-mark text-center">
+    <img class="img-momo"  src="/v2/gateway/images/momo-horizontal.png">
+    <img class="img-momo-vietqr-mark"  src="/v2/gateway/images/vietqr.png">
+    <img class="img-napas"  src="/v2/gateway/images/napas247.png">
+</div>
+</div>
+                                    </div>
+
+                                    <div class="qrcode_scan_container">
+                                        <div class="qrcode_scan">
+                                            <div class="qrcode_gradient"><img alt=""
+                                                                              src="/v2/gateway/images/qrcode-gradient.png"
+                                                                              loading="lazy"
+                                                                              class="jsx-d22f6bd0771ae323 img-fluid">
+                                            </div>
+                                            <div class="qrcode_border"><img alt=""
+                                                                            src="/v2/gateway/images/border-qrcode.svg"
+                                                                            class="jsx-d22f6bd0771ae323 img-fluid">
+                                            </div>
+                                            <div class="qrcode_image">
+                                                <img alt="paymentcode"
+                                                     class="image-qr-code" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAV4AAAFeCAYAAADNK3caAABI5ElEQVR4Xu29C9Rtd1ne++Gho+059oioFKujHjuK1vbY0Y5WpVTxhghyMaDSg1VAuRQEFNByFS2WAIY7ysUAQkBCAoEAIZAQruGWEO63SuQersVyERRBYJ4912anWb+1nzzrff/v/M/5beZvjGcE8/3e5//OuTNmv357fWsdDCsrKysrXTngv1hZWVlZmZb1wbuysrLSmfXBu7KystKZ9cG7srKy0pn1wbuysrLSmfXBu7KystKZ9cG7srKy0pn1wbuysrLSmfXBu7KystKZ9cG7srKy0pn1wbuysrLSmfXBu7KystKZ9cG7srKy0pn1wbuysrLSmfXBu7KystKZ5gfvwcHBochccA+3D71sFPSqE4XzvXro9YqCnvOjsLc6VbB3qWmluYELLTVzwT3cPvSyUdCrThTO9+qh1ysKes6Pwt7qVMHepaaV5gYutNTMBfdw+9DLRkGvOlE436uHXq8o6Dk/CnurUwV7l5pWmhu40FIzF9zD7UMvGwW96kThfK8eer2ioOf8KOytThXsXWpaaW7gQkvNXHAPtw+9bBT0qhOF87166PWKgp7zo7C3OlWwd6lppbmBCy01c8E93D70slHQq04UzvfqodcrCnrOj8Le6lTB3qWmleYGLlS1WBbukd2H89keBXt79U+dKJyvThTOrz3bcN4lCuezPVVwj6p9mhu4UNViWbhHdh/OZ3sU7O3VP3WicL46UTi/9mzDeZconM/2VME9qvZpbuBCVYtl4R7ZfTif7VGwt1f/1InC+epE4fzasw3nXaJwPttTBfeo2qe5gQtVLZaFe2T34Xy2R8HeXv1TJwrnqxOF82vPNpx3icL5bE8V3KNqn+YGLlS1WBbukd2H89keBXt79U+dKJyvThTOrz3bcN4lCuezPVVwj6p9mhu4UNViWbhHdh/OZ3sU7O3VP3WicL46UTi/9mzDeZconM/2VME9qvZpbuBCbjF62Sjo9fKjmQvu4RKF866HnksUzrseellfRUHP+VHY6/rpVfsKzrseetko6Dl/X5obuJBbjF42Cnq9/Gjmgnu4ROG866HnEoXzrode1ldR0HN+FPa6fnrVvoLzrodeNgp6zt+X5gYu5Bajl42CXi8/mrngHi5ROO966LlE4bzroZf1VRT0nB+F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t/7TnYfYFfPMgztuHqKPPbjh8Ozv+M3hFTd+9PDaWz1peNn1HzGc8c13HP7o4GeGPz64/nDm1e8yvOLnHrX52stv8MjhzG/5jSMzNxieevCfj3T8l53e8YH7Zwe/vukdH7LPv9a9h1ed9MfD6279pOGVN3nMcPb33nM49eDmRx7EN7rcZwfzprudwcvbgvfRJQrnT5SeKrhH9T7srepvbxBw0ezCnF97tuG866Hn/CiffNV7dh5eV8z40D314Gab72zf9egXDV/+whe35r/4qc8NF9/9acMl9zp9+NLn/nrra3/76c8Pb/mD52wenk86+KWth+/4v59y8MtHHtg/O1xwk4cOH79w96VhIx99yduH83765CMP9+sPpx386l4P30+/5cOsuRzeR5conD9ReqrgHtX7sLeqv71BwEWzC3N+7dmG866HnvOjnP1dv7Pz4DqW8f+L/+SDW2wSeccw8pFz3z78ycFNj3zn+ytHescfPdxh89Adv5N99x+fT/24vPWBZ28e0kcfvlf+o4dz/sXvcvxyeB9donD+ROmpgntU78Peqv7mBi7koqC31FTB3mw/512icP6KGd/T4Ir8xakX7jy0tnPbIw+7Gwzvf/Lrt+YyvO3eZ29+JDE+NMcfL4wP0fc85mXUrpS33ve5m47x4b2763bG9wW+Is997nN37sc+95le1p86UTi/1CjoOb+V5mYu6qKgt9RUwd5sP+ddonD+WG51q1tRHZ59td/ceWBdMeNfdj3ve+7NsRRf+9pXh2f+33f6+o8XbjC89CcfRmUvXviD99/8xZ37rves77g7R4ef//mf37kv7j7Ty/pTJwrnlxoFPee30tzMRV0U9JaaKtib7ee8SxTOH8upp5665b3vqf630x575LvSN/zGM7bmRt79sPOHM3/8zsPHL3gXvzR84BkXDWdc907D+057Lb80vPrmT9j8rHb8me9n3/lRfnn49MUfHi64xUOH51/7vsPLf+VRw1+94xNUho+d987Nqx7G75q5L3PZ2du/WPHQhz505764+0wv60+dKJxfahT0nN9KczMXdVHQW2qqYG+2n/MuUTg/5mpXu9rw2c9uv8Z1fOkVH1TM+OOAt/3e87bmvvp3X9k89O538N3DS39697vW533vvYb7HvyT4bnf9dv80nDxHZ42nHLwQ8O53//7/NLw6Td/aPOXeI88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"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4 text-sm">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                             stroke="currentColor" class="jsx-d22f6bd0771ae323 mr-1 inline h-6 w-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                  d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"
+                                                  class="jsx-d22f6bd0771ae323"></path>
+                                        </svg>
+                                        <a>Sử dụng <b> App MoMo </b> hoặc <b> ứng dụng ngân
+                                            hàng </b> để quét mã</a>
+                                        
+                                    </div>
+
+                                        
+
+                                        <div class="text-center text-nowrap mt-3 font-size-14">
+                                            <div class="mr-1 d-inline">Gặp khó khăn khi thanh toán? </div>
+                                            <a
+                                                    class="yellow-color font-weight-bold-600 hover-none-decoration"
+                                                    href="#" onclick="return showModal()">Xem Hướng dẫn</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        <div class="slide-wrapper">
+                            <div id="slides"></div>
+                            <div style="text-align: center">
+                                <div id="dots">
+                                    <div id="float"></div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <form action="/v2/gateway/action" id="cancel-payment-form" method="post"
+                      novalidate>
+                    <input name="_csrf"
+                           value="1403dab7-fc7b-4f10-8872-57f917628684"
+                           type="hidden"/>
+                    <input name="sessionId" value="TU9NT0JLVU4yMDE4MDUyOXxPRDE3NDYyMDI1MTE4Mjk"
+                           type="hidden"/>
+                    <input name="mToken" value="xMWFuqBKCn9nX/Gc0JgBGG7fQ5ezF1F9aFjSVTTjmggJC+TP51kPr3KKGbJCVg2Vl8rjKmyFYXs="
+                           type="hidden"/>
+                    <div>
+                        <button class="btn btn-momo-cancel" id="btn-momo-cancel" name="action"
+                                style="display: none;" type="submit"
+                                value="cancel">
+                            Quay lại
+                        </button>
+                        <button id="btn-momo-expire" name="action" style="display: none;"
+                                type="submit" value="expire">Expire
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+            <script async
+                    src="https://www.googletagmanager.com/gtag/js?id=G-XLJFKD4ESD"></script>
+            <!-- Global site tag (gtag.js) - Google Analytics -->
+            <script>
+                window.dataLayer = window.dataLayer || [];
+
+                function gtag() {
+                    dataLayer.push(arguments);
+                }
+
+                gtag('js', new Date());
+
+                gtag('config', 'G-XLJFKD4ESD');
+            </script>
+            <script>
+                var offset = 600774;
+                var countdown = parseInt(offset) / 1000;
+                var retry = 500;
+                var isTablet = false;
+                var device;
+                var lastCountDown;
+                var countDownTimer;
+                var pageHidden = false;
+                if (false) {
+                    device = 'mobile';
+                } else if (false) {
+                    device = 'tablet';
+                } else device = 'desktop';
+                var trackingModel = {"merchant_id":"MOMOBKUN20180529","order_id":"OD1746202511829","service_name":"payment_momowallet","screen_name":"wallet_pgw","event_name":null,"device":"desktop","api":null,"button_name":null,"status":null,"component_name":null,"category":null,"field_name":null};
+                var refreshQrInterval = parseInt(null);
+
+                function back() {
+                    if (trackingModel) {
+                        // const params = Object.fromEntries(Object.entries(trackingModel).filter(([_, v]) => v != null));
+                        const params = trackingModel;
+                        params.component_name = 'cancel_confirmation';
+                        params.category = 'popup';
+                        params.button_name = 'confirm';
+                        gtag('event', 'service_component_clicked', params);
+                    }
+                    handleAction("cancel");
+                }
+
+                function closeCommonModalAndSendEvent() {
+                    if (trackingModel) {
+                        // const params = Object.fromEntries(Object.entries(trackingModel).filter(([_, v]) => v != null));
+                        const params = trackingModel;
+                        params.component_name = 'cancel_confirm';
+                        params.category = 'popup';
+                        params.button_name = 'close';
+                        gtag('event', 'service_component_clicked', params);
+                    }
+                    $(".common-modal").remove()
+                }
+
+                function isInIframe() {
+                    try {
+                        return window.self !== window.top;
+                    } catch (e) {
+                        return true;
+                    }
+                }
+
+                function isSafari() {
+                    return null && navigator.vendor && navigator.vendor.indexOf('Apple') > -1 &&
+                        navigator.userAgent &&
+                        navigator.userAgent.indexOf('CriOS') === -1 &&
+                        navigator.userAgent.indexOf('FxiOS') === -1;
+                }
+
+                function openStore() {
+                    setTimeout(function () {
+                        if (isInIframe()) {
+                            if (isSafari()) {
+                                window.top.location.href = "market:\/\/details?id=com.mservice.momotransfer";
+                            } else {
+                                window.location.href = "market:\/\/details?id=com.mservice.momotransfer";
+                            }
+                        } else {
+                            window.location.href = "market:\/\/details?id=com.mservice.momotransfer";
+                        }
+                    }, 100);
+                }
+
+                $('#openAppStore').click(function () {scsac
+                    openStore();
+                    return false;
+                });
+
+                document.onreadystatechange = function () {
+                    if ("interactive" === document.readyState && trackingModel) {
+                        // const params = Object.fromEntries(Object.entries(trackingModel).filter(([_, v]) => v != null));
+                        const params = trackingModel;
+                        params.api = 'payUrl';
+                        params.status = 'success';
+                        gtag('event', 'gateway_displayed', params);
+                    }
+                    "complete" == document.readyState && setTimeout(async function () {
+                        if (trackingModel) {
+                            // const params = Object.fromEntries(Object.entries(trackingModel).filter(([_, v]) => v != null));
+                            const params = trackingModel;
+                            params.api = 'qr';
+                            params.status = 'success';
+                            gtag('event', 'qr_displayed', params);
+                        }
+                        document.getElementById("interactive"), document.getElementById("load").remove(), document.getElementById("contents").classList.remove("d-none");
+                    }, 1e3)
+                }
+
+                function renderCountDown() {
+                    var d = Math.max(0, parseInt(countdown / 86400)),
+                        b = Math.max(0, parseInt((countdown - d * 86400) / 3600)),
+                        a = Math.max(0, parseInt((countdown - d * 86400 - b * 3600) / 60)),
+                        c = Math.max(0, parseInt(countdown - 60 * a - b * 3600 - d * 86400));
+                    if (document.hidden) {
+                        if (lastCountDown) {
+                            let diff = Math.round((new Date().getTime() - lastCountDown.getTime()) / 1000);
+                            countdown -= diff;
+                        } else {
+                            countdown--;
+                        }
+                    } else {
+                        countdown--;
+                    }
+                    if (countdown < 0) countdown = 0;
+                    a < 10 && (a = "0" + a), b < 10 && (b = "0" + b), c < 10 && (c = "0" + c);
+                    if (d > 0) {
+                        d < 10 && (d = "0" + d);
+                        $("span[name=expiredAt]").html('<div class="time-box">' + d + '<br>' + '<p>' + "Ngày" + '</p>' + '</div>' + '<div class="time-box">' + b + '<br>' + '<p>' + "Giờ" + '</p>' + '</div>' + '<div class="time-box">' + a + '<br>' + '<p>' + "Phút" + '</p>' + '</div>' + '<div class="time-box">' + c + '<br>' + '<p>' + "Giây" + '</p>' + '</div>'), $("b[name=expiredAt]").html(d + " Ngày : " + b + " Giờ : " + a + " Phút : " + c + " Giây ");
+                    }
+
+                    if (d <= 0 && b > 0) {
+                        $("span[name=expiredAt]").html('<div class="time-box">' + b + '<br>' + '<p>' + "Giờ" + '</p>' + '</div>' + '<div class="time-box">' + a + '<br>' + '<p>' + "Phút" + '</p>' + '</div>' + '<div class="time-box">' + c + '<br>' + '<p>' + "Giây" + '</p>' + '</div>'), $("b[name=expiredAt]").html(b + " Giờ : " + a + " Phút : " + c + " Giây ");
+                    }
+
+                    if (d <= 0 && b <= 0) {
+                        $("span[name=expiredAt]").html('<div class="time-box">' + a + '<br>' + '<p>' + "Phút" + '</p>' + '</div>' + '<div class="time-box">' + c + '<br>' + '<p>' + "Giây" + '</p>' + '</div>'), $("b[name=expiredAt]").html(a + " Phút : " + c + " Giây ");
+                    }
+                    lastCountDown = new Date();
+                    countdown <= 0 && (clearInterval(countDownTimer), handleAction("expire"))
+                }
+
+                $(document).ready(function () {
+                    $.ajaxSetup({cache: !1})
+                    setUpUI();
+
+                    if (offset > 0) {
+                        countDownTimer = setInterval(renderCountDown, 1e3);
+                        document.addEventListener("visibilitychange", () => {
+                            if (document.hidden) {
+                                pageHidden = true;
+                            } else {
+                                if (pageHidden) {
+                                    let diff = Math.round((new Date().getTime() - lastCountDown.getTime()) / 1000);
+                                    if (diff > 0) {
+                                        countdown = countdown - diff + 1;
+                                        renderCountDown();
+                                    }
+                                    pageHidden = false;
+                                }
+                            }
+                        });
+                    }
+                });
+
+                function redirect(data) {
+                    if (trackingModel) {
+                        // const params = Object.fromEntries(Object.entries(trackingModel).filter(([_, v]) => v != null));
+                        const params = trackingModel;
+                        params.api = 'redirectUrl';
+                        params.status = 'success';
+                        gtag('event', 'callback_completed', params);
+                    }
+                    if (data.return_url) {
+                        window.location.replace(data.return_url);
+                    } else if (data.returnUrl) {
+                        window.location.replace(data.returnUrl);
+                    }
+                }
+
+
+                function executeXML() {
+                    var xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function () {
+                        if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
+                            // Typical action to be performed when the document is ready:
+                            var data = JSON.parse(xhttp.responseText);
+                            if (data.redirect) {
+                                redirect(data);
+                            } else {
+                                if (retry > 0)
+                                    setTimeout(executeXML, 4000);
+                                retry--;
+                            }
+                        }
+                    };
+                    xhttp.open("POST", '/v2/gateway/querySession', true);
+                    xhttp.setRequestHeader("X-CSRF-TOKEN", "1403dab7-fc7b-4f10-8872-57f917628684");
+                    if ("captureWallet" == "payWithAioBillPay") {
+                        let webURL = {
+                            t: "TU9NT0JLVU4yMDE4MDUyOXxPRDE3NDYyMDI1MTE4Mjk",
+                            s: "cb5a4290de6979cb7d3f2ff0fbc96f1ce94f01bf16456d56a420ffa2d7269d2d"
+                        }
+                        xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                        xhttp.send(JSON.stringify(webURL));
+                    } else {
+                        xhttp.send();
+                    }
+                }
+
+                $(document).ready(function () {
+                    $.ajaxSetup({
+                        cache: false
+                    });
+                    setTimeout(executeXML, 4000);
+
+                });
+
+                function showModal() {
+                    if (trackingModel) {
+                        // const params = Object.fromEntries(Object.entries(trackingModel).filter(([_, v]) => v != null));
+                        const params = trackingModel;
+                        params.button_name = 'user_guide';
+                        gtag('event', 'service_button_clicked', params);
+                    }
+                    $('.modal-background').css('display', 'block')
+                }
+
+                function closeModal() {
+                    $('.modal-background').css('display', 'none')
+                }
+
+                function handleAction(actionType) {
+                    var xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function () {
+                        if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
+                            var data = JSON.parse(xhttp.responseText);
+                            if (data.status_code !== 7000) {
+                                if (actionType === "expire") {
+                                    document.getElementById("btn-momo-expire").click();
+                                } else if (actionType === "cancel") {
+                                    document.getElementById("btn-momo-cancel").click();
+                                }
+                            }
+                        }
+                    };
+                    xhttp.open("POST", '/v2/gateway/queryProcessingTransaction', false);
+                    xhttp.setRequestHeader("X-CSRF-TOKEN", "1403dab7-fc7b-4f10-8872-57f917628684");
+                    if ("captureWallet" == "payWithAioBillPay") {
+                        let webURL = {
+                            t: "TU9NT0JLVU4yMDE4MDUyOXxPRDE3NDYyMDI1MTE4Mjk",
+                            s: "cb5a4290de6979cb7d3f2ff0fbc96f1ce94f01bf16456d56a420ffa2d7269d2d"
+                        }
+                        xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                        xhttp.send(JSON.stringify(webURL));
+                    } else {
+                        xhttp.send();
+                    }
+                }
+
+                function setUpUI() {
+                    document.documentElement.style.setProperty('--footer-header-height', $('#header').height() + $('#footer').height() + "px");
+                    $('.ellipsis').each(function () {
+                        const $c = $(this)
+                            .clone()
+                            .css({display: 'inline', width: 'auto', visibility: 'hidden'})
+                            .appendTo('body');
+                        const mws = $(this).css('max-width');
+                        if (mws) {
+                            const mw = parseInt(mws.replaceAll('px', ''));
+                            if ($c.width() > mw) {
+                                createTooltip($(this), $(`<div class='tip-content p-1'>${$(this).text()}</div>`), 40);
+                            }
+                        }
+                        $c.remove();
+                    });
+                    const feeEu = null;
+                    if (feeEu) {
+                        const tipContent = $(`<div class='tip-content p-1'>
+                            <div class="pb-2 font-weight-bolder font-size-14" style="border-bottom: 1px dashed;">Phí áp dụng</div>
+                            <div class="mt-2 d-flex justify-content-between">
+                                <strong>Phí giao dịch:</strong>
+                                <strong>${feeEu}đ</strong>
+                            </div>
+                            <div class="mt-1">Phí giao dịch này dùng để xử lý, duy trì và cải tiến các giao dịch với các đối tác của cổng thanh toán</div>
+                        </div>`);
+                        createTooltip($('#fee-eu-tooltip'), tipContent, 50);
+                    }
+                    if ("10.000" == 0) {
+                        var expireText = $("<div class='expire-content mb-3'> <div class='box-expire' style='width: 350px; margin: auto'> <div class='expire-text'><p>Đơn hàng sẽ hết hạn sau: <span class='font-weight-bold time-expire-text d-inline-flex' name='expiredAt'></span></p></div></div></div>");
+                        var instruction = $("<div class='text-center my-3 font-size-14'><a class='black12-color mr-1'>Gặp khó khăn khi thanh toán?</a><a onclick='return showModal()' class='blue-color font-weight-bold-600' href='#'>Xem Hướng dẫn</a></div>");
+                        var backButtonObjectRender = $("<div class='text-center my-3 font-size-14 font-weight-bold-600'><a class='momo-color backButton' href='#'>Quay về</a></div>");
+
+                        $(".payment-qr").css("padding", "30px 0px 30px 0px");
+
+                        $("#orderInfo").remove();
+                        $("#form-qr-code").removeClass("col-lg-8");
+
+                        isTablet ? $("#form-qr-code").addClass("col-lg-12") : $("#form-qr-code").addClass("col-lg-12");
+
+                        $(".payment-qr").append(expireText).append(instruction).append(backButtonObjectRender);
+                    }
+
+                    $('#backButton').click(function () {
+                        if ("captureWallet" === 'payWithAioBillPay') {
+                            window.history.go(-1);
+                            return false;
+                        }
+                        if ("captureWallet" === 'payWithMethod' && (null === null || null === false)) {
+                            location.reload();
+                            return false;
+                        }
+                        if (trackingModel) {
+                            // const params = Object.fromEntries(Object.entries(trackingModel).filter(([_, v]) => v != null));
+                            const params = trackingModel;
+                            params.button_name = 'back';
+                          //  gtag('event', 'service_button_clicked', params);
+                        }
+                        stringPartner = "Bạn chắc chắn muốn hủy giao dịch thanh toán với " + "<strong>" + "MoMo Demo" + "</strong>" + "?";
+                        showCommonModal("Huỷ giao dịch thanh toán",
+                            stringPartner,
+                            "HUỶ GIAO DỊCH",
+                            "return back()",
+                            "ĐÓNG",
+                            "return closeCommonModalAndSendEvent()");
+                        return false;
+                    })
+                }
+            </script>
+            <script src="/v2/gateway/sh/scripts/core.js"></script>
+            <script src="/v2/gateway/sh/scripts/canary.min.js"></script>
+            <script src="/v2/gateway/sh/scripts/slider.js"></script>
+            <script src="/v2/gateway/sh/scripts/qrcode.min.js"></script>
+        </div>
+    </div>
+<div><footer id="footer">
+    <div class="container">
+        <div class="footer-wrapper">
+            <div class="footer-wrap-version">
+                <span>© 2023 - Cổng thanh toán MoMo</span>
+            </div>
+
+            <div class="footer-wrap-info">
+                <span>Hỗ trợ khách hàng:</span>
+                <a class="momo-phone-icon" href="tel:1900545441">1900 54 54 41 (1000đ/phút)</a>
+                <a class="momo-mail-icon" href="mailto:hotro@momo.vn">hotro@momo.vn</a>
+            </div>
+        </div>
+    </div>
+</footer></div>
+<script>
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+</script>
+</body>
+</html>

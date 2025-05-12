@@ -1,0 +1,89 @@
+.modal-container .momo {
+    border-radius: 1rem 1rem 0 0;
+}
+
+.modal-container .momo, .modal-container .bank {
+    padding: 40px 10px 10px 10px
+}
+
+.modal-container .bank {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+    .modal-container .bank .arrow {
+        width: 100px;
+        bottom: 18%;
+        left: 45%;
+    }
+
+    .modal-instruction {
+        margin: 3rem auto 2rem auto;
+        max-width: 400px;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .modal-container .bank .arrow {
+        width: 110px;
+        bottom: 18%;
+        left: 45%;
+    }
+
+    .modal-instruction {
+        margin: 3rem auto 2rem auto;
+    }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+    .modal-instruction {
+        width: 70%;
+        max-width: 800px;
+    }
+
+    .modal-container .bank {
+        padding-top: 50px;
+        border-radius: 0 1rem 1rem 0;
+        padding-bottom: 25px;
+    }
+
+    .modal-container .bank .arrow {
+        width: 90px;
+        bottom: 18%;
+        left: 45%;
+    }
+
+    .modal-container .momo {
+        padding-bottom: 25px;
+        border-radius: 1rem 0 0 1rem;
+        padding-top: 50px;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .modal-container .bank .arrow {
+        width: 110px;
+        bottom: 18%;
+        left: 45%;
+    }
+
+    .modal-container .bank {
+        padding-top: 60px;
+        border-radius: 0 1rem 1rem 0;
+    }
+
+    .modal-container .bank {
+        padding-bottom: 25px;
+    }
+
+    .modal-instruction {
+        max-width: 900px;
+    }
+
+    .modal-container .momo {
+        padding-top: 60px;
+        padding-bottom: 25px;
+        border-radius: 1rem 0 0 1rem;
+    }
+}
